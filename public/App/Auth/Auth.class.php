@@ -8,9 +8,9 @@ final class Auth extends Base {
 
     // Get Token
     public function getToken() {
-        $center = (array) Database\Queries\Centers::fetchCenterByCenterCodeByPassword($this->getCenterCode(), $this->getPassword(), $this->m_database);
+        $center = Database\Queries\Centers::fetchCenterByCenterCodeByPassword($this->getCenterCode(), $this->getPassword(), $this->m_database);
 
-        if(0 == count($center)) {
+        if(!is_array($center)) {
             global $g_messages;
 
             $payload = [

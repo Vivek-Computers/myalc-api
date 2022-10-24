@@ -2,9 +2,8 @@
     return function ($request, $response, array $parameters) {
         require_once PATH_APP . '/Auth/Auth.class.php';
         
-        $data = $request->getParsedBody();
-       display(json_decode( $request->getBody(),true));
-       exit;
+        $data = json_decode( $request->getBody(),true);
+
         $auth = new Auth();
         $auth->setCenterCode($data['centerCode'] ?? null);
         $auth->setPassword($data['password'] ?? null);
